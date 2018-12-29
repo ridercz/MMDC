@@ -5,9 +5,10 @@ VisualStudioVersion = 15.0.28307.168
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{84418F22-C416-47E9-8264-7790AABA754D}"
 EndProject
-Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{21E13524-78D6-4DB2-90ED-69AF5C873D48}"
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{21E13524-78D6-4DB2-90ED-69AF5C873D48}"
 	ProjectSection(SolutionItems) = preProject
 		.gitignore = .gitignore
+		CODE_OF_CONDUCT.md = CODE_OF_CONDUCT.md
 		LICENSE = LICENSE
 		README.md = README.md
 	EndProjectSection
