@@ -50,13 +50,13 @@ namespace MmdcPoc {
                 var frame = new byte[display.Properties.Width * display.Properties.Height * 3];
                 var frameCount = 0;
                 var sw = new System.Diagnostics.Stopwatch();
-                Console.WriteLine("  Sending random frames to measure fps. Press any key to stop or wait 10 s.");
+                Console.WriteLine("  Sending random frames to measure fps...");
                 sw.Start();
                 while (true) {
                     rng.GetBytes(frame);
                     display.SendFrame(frame);
                     frameCount++;
-                    if (Console.KeyAvailable || sw.ElapsedMilliseconds > 10000) break;
+                    if (sw.ElapsedMilliseconds > 3000) break;
                 }
                 sw.Stop();
                 Console.WriteLine($"  Sent {frameCount} frames in {sw.Elapsed.TotalSeconds:N2} ms = {frameCount / sw.Elapsed.TotalSeconds:N2} fps.");
