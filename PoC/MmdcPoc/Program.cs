@@ -4,39 +4,71 @@ using Altairis.Mmdc.DisplayDriver;
 
 namespace MmdcPoc {
     internal class Program {
-        private const string PORT_NAME = "COM4";
 
         private static void Main(string[] args) {
-            var display = new PhysicalDisplay(PORT_NAME);
-
-            // Connect
-            Console.Write("Connecting to display...");
-            display.Open();
-            Console.WriteLine($"{display.Properties.Version} (SN {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
-
-            // Measure fps
-            var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
-            var frame = new byte[display.Properties.Width * display.Properties.Height * 3];
-            var frameCount = 0;
-            var sw = new System.Diagnostics.Stopwatch();
-            Console.WriteLine("Sending random frames. Press any key to stop.");
-            sw.Start();
-            while (true) {
-                rng.GetBytes(frame);
-                display.SendFrame(frame);
-                frameCount++;
-                if (Console.KeyAvailable) break;
+            // List all available displays
+            Console.WriteLine("Let's look for displays. It may take several minutes to complete.");
+            Console.Write("Scanning ports for compatible displays...");
+            var displays = PhysicalDisplayManager.ScanPorts();
+            if (displays.Count == 0) {
+                Console.WriteLine("Failed!");
+                Console.WriteLine("No displays found.");
+                return;
             }
-            sw.Stop();
-            Console.WriteLine($"Sent {frameCount} in {sw.Elapsed.TotalSeconds:N2} ms = {frameCount/ sw.Elapsed.TotalSeconds:N2} fps.");
+            Console.WriteLine($"OK, found {displays.Count} displays.");
+            Console.WriteLine();
 
-            // Turn off
-            display.SendColor(0, 0, 0);
+            // Show table with parameters
+            Console.WriteLine("----------------+------+------+------------------+-----------------------------");
+            Console.WriteLine("Port            |    W |    H | Serial Number    | Version                     ");
+            Console.WriteLine("----------------|------|------|------------------|-----------------------------");
+            foreach (var display in displays) {
+                Console.WriteLine($"{display.PortName,-15} | {display.Width,4} | {display.Height,4} | {display.SerialNumber.Replace("-", "")} | {display.Version}");
+            }
+            Console.WriteLine("----------------+------+------+------------------+-----------------------------");
+            Console.WriteLine();
 
-            // Close
-            Console.Write("Closing display...");
-            display.Close();
-            Console.WriteLine("OK");
+            // Test displays one by one
+            foreach (var display in displays) {
+                TestSingleDisplay(display.PortName);
+            }
+        }
+
+        private static void TestSingleDisplay(string portName) {
+            if (portName == null) throw new ArgumentNullException(nameof(portName));
+            if (string.IsNullOrWhiteSpace(portName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(portName));
+
+            using (var display = new PhysicalDisplay(portName)) {
+                // Connect
+                Console.Write($"Connecting to {portName}...");
+                display.Open();
+                Console.WriteLine("OK");
+                Console.WriteLine($"  {display.Properties.Version} (SN {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
+
+                // Measure fps
+                var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
+                var frame = new byte[display.Properties.Width * display.Properties.Height * 3];
+                var frameCount = 0;
+                var sw = new System.Diagnostics.Stopwatch();
+                Console.WriteLine("  Sending random frames to measure fps. Press any key to stop or wait 10 s.");
+                sw.Start();
+                while (true) {
+                    rng.GetBytes(frame);
+                    display.SendFrame(frame);
+                    frameCount++;
+                    if (Console.KeyAvailable || sw.ElapsedMilliseconds > 10000) break;
+                }
+                sw.Stop();
+                Console.WriteLine($"  Sent {frameCount} frames in {sw.Elapsed.TotalSeconds:N2} ms = {frameCount / sw.Elapsed.TotalSeconds:N2} fps.");
+
+                // Turn off
+                display.SendColor(0, 0, 0);
+
+                // Close
+                Console.Write("  Closing display...");
+                display.Close();
+                Console.WriteLine("OK");
+            }
         }
     }
 }
