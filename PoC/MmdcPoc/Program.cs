@@ -7,7 +7,7 @@ namespace MmdcPoc {
         private const string PORT_NAME = "COM4";
 
         private static void Main(string[] args) {
-            var display = new Display(PORT_NAME);
+            var display = new PhysicalDisplay(PORT_NAME);
 
             // Connect
             Console.Write("Connecting to display...");

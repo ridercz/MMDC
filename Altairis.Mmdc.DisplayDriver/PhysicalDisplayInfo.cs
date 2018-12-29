@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 
 namespace Altairis.Mmdc.DisplayDriver {
-    public class DisplayInfo {
+    public class PhysicalDisplayInfo {
 
         public string PortName { get; set; }
 
