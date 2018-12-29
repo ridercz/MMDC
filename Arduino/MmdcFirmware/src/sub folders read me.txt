@@ -1,0 +1,3 @@
+http://www.visualmicro.com/
+
+The \src folder and any folder below can be used for additional local project cpp/c/h/hpp etc. source code.

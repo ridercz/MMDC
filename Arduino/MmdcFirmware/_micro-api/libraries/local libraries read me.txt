@@ -1,0 +1,25 @@
+Local libraries should conform to the Arduino Library Specification https://github.com/arduino/arduino/wiki/arduino-ide-1.5:-library-specification
+
+The top level source code folder of each #included Arduino library automatically becomes a compiler include (-I). 
+
+The primary source folder for more recent Arduino libraries is the 'LibName\src' sub folder.
+
+It is highly recommended to ensure the name of a library header (.h) has the same name as the library folder and that header is #included in code. For example \Library1\Library1.h
+
+The "Deep Search for Libraries" facility will find libraries #included in ino/cpp/c files and will correctly find #includes that are inside valid #if conditions, but it has a performance impact on the compiler.
+
+If the project does not use conditional #if statement to #include libraries then a simpler faster system is to switch off "Deep Search for Libraries" and ensure that a Library header is #include in the INO code. In this event Visual Micro will use a high speed regex expression to find library #includes regardless of #if conditions.
+
+Arduino libraries must always be #included in source code without qualifying the path to the library. 
+
+For example this IS correct:-
+
+	#include <Library1.h>
+
+These are NOT correct:-
+
+	#include <Library1/Library1.h>
+	#include <../foo/baa/Libraries/Library1/Library1.h>
+
+
+read more at https://www.visualmicro.com
