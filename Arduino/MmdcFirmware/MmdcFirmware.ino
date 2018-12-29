@@ -3,7 +3,7 @@
 #include "Matrix.h"
 
 #define SERIAL_SPEED  115200
-#define VERSION       "MMDC-Display/1.0.0"
+#define VERSION       "NeoPixel-Display/1.0.0"
 #define WIDTH         16
 #define HEIGHT        16
 #define SN_LENGTH     8
@@ -14,7 +14,7 @@
 #define LED_PIN       3
 #define LED_ORDER     GRB
 #define ACK_CHAR      0x06
-#define INIT_DELAY    500
+#define INIT_DELAY    250
 
 Matrix m = Matrix(WIDTH, HEIGHT, ZERO, GEOMETRY, SEQUENCE);
 CRGB leds[WIDTH * HEIGHT];
@@ -29,6 +29,7 @@ void setup() {
 
   // Send signature
   FastLED.showColor(CRGB(0x33, 0x00, 0x00));
+  Serial.println("MMDC Display Connected");
   Serial.print("VERSION=");
   Serial.println(VERSION);
   delay(INIT_DELAY);
