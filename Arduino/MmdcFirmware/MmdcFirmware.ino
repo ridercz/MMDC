@@ -108,7 +108,6 @@ void sendOrGetSerialNumber() {
   for (int i = 0; i < SN_LENGTH; i++) {
     if (sn[i] < 0x10) Serial.print("0");
     Serial.print(sn[i], HEX);
-    if (i < SN_LENGTH - 1) Serial.print("-");
   }
   Serial.println();
 }

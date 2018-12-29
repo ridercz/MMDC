@@ -23,7 +23,7 @@ namespace MmdcPoc {
             Console.WriteLine("Port            |    W |    H | Serial Number    | Version                     ");
             Console.WriteLine("----------------|------|------|------------------|-----------------------------");
             foreach (var display in displays) {
-                Console.WriteLine($"{display.PortName,-15} | {display.Width,4} | {display.Height,4} | {display.SerialNumber.Replace("-", "")} | {display.Version}");
+                Console.WriteLine($"{display.PortName,-15} | {display.Width,4} | {display.Height,4} | {display.SerialNumber} | {display.Version}");
             }
             Console.WriteLine("----------------+------+------+------------------+-----------------------------");
             Console.WriteLine();
@@ -43,7 +43,7 @@ namespace MmdcPoc {
                 Console.Write($"Connecting to {portName}...");
                 display.Open();
                 Console.WriteLine("OK");
-                Console.WriteLine($"  {display.Properties.Version} (SN {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
+                Console.WriteLine($"  {display.Properties.Version} (SN: {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
 
                 // Measure fps
                 var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
