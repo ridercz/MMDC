@@ -3,7 +3,6 @@ using System.IO.Ports;
 
 namespace Altairis.Mmdc.DisplayDriver {
     public class PhysicalDisplay : IDisposable {
-        private const int SN_LENGTH = 8;
         private const byte ACK_CHAR = 0x06;
 
         public const int DEFAULT_SPEED = 115200;
@@ -28,36 +27,10 @@ namespace Altairis.Mmdc.DisplayDriver {
             if (this.port.IsOpen) throw new InvalidOperationException("Port already open");
 
             this.port.Open();
-
-            // Read headers
-            while (true) {
-                var line = this.port.ReadLine();
-                if (line.Equals("OK", StringComparison.OrdinalIgnoreCase)) break;   // End of header
-                if (line.Equals("SN?", StringComparison.OrdinalIgnoreCase)) {
-                    this.CreateRandomSerialNumber();
-                    continue;
-                }
-
-                // Parse header line
-                var data = line.Split(new char[] { '=' }, 2);
-                if (data.Length != 2) throw new Exception($"Unexpected data received: '{line}'.");
-
-                // Parse known headers
-                if (data[0].Equals("VERSION", StringComparison.OrdinalIgnoreCase)) this.Properties.Version = data[1];
-                if (data[0].Equals("SN", StringComparison.OrdinalIgnoreCase)) this.Properties.SerialNumber = data[1];
-                if (data[0].Equals("WIDTH", StringComparison.OrdinalIgnoreCase)) this.Properties.Width = int.Parse(data[1]);
-                if (data[0].Equals("HEIGHT", StringComparison.OrdinalIgnoreCase)) this.Properties.Height = int.Parse(data[1]);
-            }
-
+            var result = this.Properties.ReadFromOpenPort(this.port);
+            if (!result) throw new InvalidOperationException("Unknown device - unrecoginzed signature");
         }
 
-        private void CreateRandomSerialNumber() {
-            var sn = new byte[SN_LENGTH];
-            using (var rng = System.Security.Cryptography.RandomNumberGenerator.Create()) {
-                rng.GetBytes(sn);
-            }
-            this.port.Write(sn, 0, sn.Length);
-        }
 
         public void SendFrame(byte[] rawData) {
             if (rawData == null) throw new ArgumentNullException(nameof(rawData));
