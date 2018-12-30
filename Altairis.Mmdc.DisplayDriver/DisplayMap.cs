@@ -11,7 +11,7 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         public int Height { get; set; }
 
-        public static DisplayMap Create(IEnumerable<PhysicalDisplayInfo> displays, IMapStrategy strategy) {
+        public static DisplayMap Create(IEnumerable<PhysicalDisplayInfo> displays, IMapBuildStrategy strategy) {
             if (displays == null) throw new ArgumentNullException(nameof(displays));
             if (strategy == null) throw new ArgumentNullException(nameof(strategy));
             if (!displays.Any()) throw new ArgumentException("At least one display must be supplied.", nameof(displays));

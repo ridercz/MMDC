@@ -1,9 +1,9 @@
 ﻿namespace Altairis.Mmdc.DisplayDriver {
-    public interface IMapStrategy {
+    public interface IMapBuildStrategy {
         PhysicalDisplayPosition GetDisplayPosition(PhysicalDisplayInfo previousInfo, PhysicalDisplayPosition previousPosition);
     }
 
-    public class HorizontalMapStrategy : IMapStrategy {
+    public class HorizontalMapBuildStrategy : IMapBuildStrategy {
         public PhysicalDisplayPosition GetDisplayPosition(PhysicalDisplayInfo previousInfo, PhysicalDisplayPosition previousPosition) {
             if (previousInfo == null || previousPosition == null) return new PhysicalDisplayPosition { X = 0, Y = 0 };
             return new PhysicalDisplayPosition {
@@ -13,7 +13,7 @@
         }
     }
 
-    public class VerticalMapStrategy : IMapStrategy {
+    public class VerticalMapBuildStrategy : IMapBuildStrategy {
         public PhysicalDisplayPosition GetDisplayPosition(PhysicalDisplayInfo previousInfo, PhysicalDisplayPosition previousPosition) {
             if (previousInfo == null || previousPosition == null) return new PhysicalDisplayPosition { X = 0, Y = 0 };
             return new PhysicalDisplayPosition {
