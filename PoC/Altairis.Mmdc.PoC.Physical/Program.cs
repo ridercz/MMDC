@@ -58,7 +58,7 @@ namespace MmdcPhysicalDisplaysPoc {
                     if (sw.ElapsedMilliseconds > 3000) break;
                 }
                 sw.Stop();
-                Console.WriteLine($"  Sent {frameCount} frames in {sw.Elapsed.TotalSeconds:N2} ms = {frameCount / sw.Elapsed.TotalSeconds:N2} fps.");
+                Console.WriteLine($"  Sent {frameCount} frames in {sw.Elapsed.TotalSeconds:N2} s = {frameCount / sw.Elapsed.TotalSeconds:N2} fps.");
 
                 // Turn off
                 display.SendColor(0, 0, 0);
