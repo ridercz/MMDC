@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.IO.Ports;
 using System.Text;
+using SixLabors.Primitives;
 
 namespace Altairis.Mmdc.DisplayDriver {
     internal static class PhysicalDisplayInfoExtensions {
@@ -50,5 +51,8 @@ namespace Altairis.Mmdc.DisplayDriver {
             // Save it to device
             port.Write(sn, 0, sn.Length);
         }
+
+        public static Rectangle ToRectangle(this KeyValuePair<PhysicalDisplayInfo, PhysicalDisplayPosition> item) => new Rectangle(item.Value.X, item.Value.Y, item.Key.Width, item.Key.Height);
+
     }
 }
