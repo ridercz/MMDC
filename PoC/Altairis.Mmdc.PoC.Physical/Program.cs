@@ -27,29 +27,30 @@ namespace MmdcPhysicalDisplaysPoc {
             Console.WriteLine("----------------+------+------+------------------+-----------------------------");
             Console.WriteLine();
 
-            // Test displays one by one
+            // Test display speed
+            Console.WriteLine("Speed test:");
             foreach (var display in displays) {
-                TestSingleDisplay(display.PortName);
+                SpeedTest(display.PortName);
             }
         }
 
-        private static void TestSingleDisplay(string portName) {
+        private static void SpeedTest(string portName) {
             if (portName == null) throw new ArgumentNullException(nameof(portName));
             if (string.IsNullOrWhiteSpace(portName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(portName));
 
             using (var display = new PhysicalDisplay(portName)) {
                 // Connect
-                Console.Write($"Connecting to {portName}...");
+                Console.Write($"  Connecting to {portName}...");
                 display.Open();
                 Console.WriteLine("OK");
-                Console.WriteLine($"  {display.Properties.Version} (SN: {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
+                Console.WriteLine($"    {display.Properties.Version} (SN: {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
 
                 // Measure fps
                 var rng = System.Security.Cryptography.RandomNumberGenerator.Create();
                 var frame = new byte[display.Properties.Width * display.Properties.Height * 3];
                 var frameCount = 0;
                 var sw = new System.Diagnostics.Stopwatch();
-                Console.WriteLine("  Sending random frames to measure fps...");
+                Console.WriteLine("    Sending random frames to measure fps...");
                 sw.Start();
                 while (true) {
                     rng.GetBytes(frame);
@@ -58,13 +59,13 @@ namespace MmdcPhysicalDisplaysPoc {
                     if (sw.ElapsedMilliseconds > 3000) break;
                 }
                 sw.Stop();
-                Console.WriteLine($"  Sent {frameCount} frames in {sw.Elapsed.TotalSeconds:N2} s = {frameCount / sw.Elapsed.TotalSeconds:N2} fps.");
+                Console.WriteLine($"    Sent {frameCount} frames in {sw.Elapsed.TotalSeconds:N2} s = {frameCount / sw.Elapsed.TotalSeconds:N2} fps.");
 
                 // Turn off
                 display.SendColor(0, 0, 0);
 
                 // Close
-                Console.Write("  Closing display...");
+                Console.Write("    Closing display...");
                 display.Close();
                 Console.WriteLine("OK");
             }
