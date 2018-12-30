@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Threading;
 using Altairis.Mmdc.DisplayDriver;
 
 namespace MmdcPoc {

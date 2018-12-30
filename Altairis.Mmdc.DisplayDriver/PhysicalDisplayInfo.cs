@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO.Ports;
-using System.Text;
-
-namespace Altairis.Mmdc.DisplayDriver {
+﻿namespace Altairis.Mmdc.DisplayDriver {
     public class PhysicalDisplayInfo {
 
         public string PortName { get; set; }

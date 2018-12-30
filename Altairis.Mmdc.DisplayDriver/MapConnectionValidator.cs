@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
 
 namespace Altairis.Mmdc.DisplayDriver {
     public class MapConnectionValidator : IMapValidator {

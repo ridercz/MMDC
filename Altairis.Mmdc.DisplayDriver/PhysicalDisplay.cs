@@ -24,13 +24,12 @@ namespace Altairis.Mmdc.DisplayDriver {
         }
 
         public void Open() {
-            if (this.port.IsOpen) throw new InvalidOperationException("Port already open");
+            if (this.port.IsOpen) throw new InvalidOperationException("Port already open.");
 
             this.port.Open();
             var result = this.Properties.ReadFromOpenPort(this.port);
-            if (!result) throw new InvalidOperationException("Unknown device - unrecoginzed signature");
+            if (!result) throw new InvalidOperationException("Unknown device - unrecoginzed signature.");
         }
-
 
         public void SendFrame(byte[] rawData) {
             if (rawData == null) throw new ArgumentNullException(nameof(rawData));

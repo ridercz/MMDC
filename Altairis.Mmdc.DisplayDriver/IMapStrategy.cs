@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace Altairis.Mmdc.DisplayDriver {
+﻿namespace Altairis.Mmdc.DisplayDriver {
     public interface IMapStrategy {
         PhysicalDisplayPosition GetDisplayPosition(PhysicalDisplayInfo previousInfo, PhysicalDisplayPosition previousPosition);
     }
