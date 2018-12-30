@@ -28,7 +28,7 @@ namespace Altairis.Mmdc.DisplayDriver {
 
             this.port.Open();
             var result = this.Properties.ReadFromOpenPort(this.port);
-            if (!result) throw new InvalidOperationException("Unknown device - unrecoginzed signature.");
+            if (!result) throw new InvalidOperationException("Unknown device - unrecognized signature.");
         }
 
         public void SendFrame(byte[] rawData) {
