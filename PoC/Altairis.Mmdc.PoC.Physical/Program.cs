@@ -1,7 +1,7 @@
 ﻿using System;
 using Altairis.Mmdc.DisplayDriver;
 
-namespace MmdcPoc {
+namespace MmdcPhysicalDisplaysPoc {
     internal class Program {
 
         private static void Main(string[] args) {

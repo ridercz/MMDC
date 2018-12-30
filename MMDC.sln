@@ -13,13 +13,13 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "_", "_", "{21E13524-78D6-4D
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "PoC", "PoC", "{033F0D89-7136-46EF-AB62-186ED758751C}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "MmdcPoc", "PoC\MmdcPoc\MmdcPoc.csproj", "{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.Mmdc.DisplayDriver", "Altairis.Mmdc.DisplayDriver\Altairis.Mmdc.DisplayDriver.csproj", "{83F649C4-4A58-4A48-887F-22EDF330F850}"
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "MmdcFirmware", "Arduino\MmdcFirmware\MmdcFirmware.vcxproj", "{C5F80730-F44F-4478-BDAE-6634EFC2CA88}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{8570B87E-2593-489B-9493-9D15CA3961B7}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.Mmdc.PoC.Physical", "PoC\Altairis.Mmdc.PoC.Physical\Altairis.Mmdc.PoC.Physical.csproj", "{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -29,14 +29,6 @@ Global
 		Release|x86 = Release|x86
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Debug|x86.ActiveCfg = Debug|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Debug|x86.Build.0 = Debug|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Release|Any CPU.Build.0 = Release|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Release|x86.ActiveCfg = Release|Any CPU
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670}.Release|x86.Build.0 = Release|Any CPU
 		{83F649C4-4A58-4A48-887F-22EDF330F850}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{83F649C4-4A58-4A48-887F-22EDF330F850}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{83F649C4-4A58-4A48-887F-22EDF330F850}.Debug|x86.ActiveCfg = Debug|Any CPU
@@ -51,13 +43,21 @@ Global
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|Any CPU.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.ActiveCfg = Release|Win32
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88}.Release|x86.Build.0 = Release|Win32
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Debug|x86.Build.0 = Debug|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|x86.ActiveCfg = Release|Any CPU
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
 	EndGlobalSection
 	GlobalSection(NestedProjects) = preSolution
-		{C17D80D1-FBF0-4FD1-A7D6-89775F9B5670} = {033F0D89-7136-46EF-AB62-186ED758751C}
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88} = {8570B87E-2593-489B-9493-9D15CA3961B7}
+		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF} = {033F0D89-7136-46EF-AB62-186ED758751C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {754FC112-9AEF-49D5-8A95-E2B2AEBB56A3}
