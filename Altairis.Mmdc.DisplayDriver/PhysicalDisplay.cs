@@ -2,7 +2,7 @@
 using System.IO.Ports;
 
 namespace Altairis.Mmdc.DisplayDriver {
-    public class PhysicalDisplay : IDisposable {
+    public class PhysicalDisplay : IDisplay, IDisposable {
         private const byte ACK_CHAR = 0x06;
 
         public const int DEFAULT_SPEED = 115200;
@@ -11,6 +11,12 @@ namespace Altairis.Mmdc.DisplayDriver {
         private readonly SerialPort port;
 
         public PhysicalDisplayInfo Properties { get; } = new PhysicalDisplayInfo();
+
+        public int Width => this.Properties.Width;
+
+        public int Height => this.Properties.Height;
+
+        public string DisplayId => this.Properties.SerialNumber;
 
         public PhysicalDisplay(string portName, int speed = DEFAULT_SPEED, int timeout = DEFAULT_TIMEOUT) {
             this.port = new SerialPort(portName, speed) {
