@@ -3,7 +3,7 @@
 namespace Altairis.Mmdc.DisplayDriver {
     public interface IMapValidator {
 
-        IEnumerable<MapValidationError> Validate(LogicalDisplayMap map);
+        IEnumerable<MapValidationError> Validate(DisplayMap map);
 
     }
 

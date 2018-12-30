@@ -5,7 +5,7 @@ using SixLabors.Primitives;
 
 namespace Altairis.Mmdc.DisplayDriver {
     public class MapGeometryValidator : IMapValidator {
-        public IEnumerable<MapValidationError> Validate(LogicalDisplayMap map) {
+        public IEnumerable<MapValidationError> Validate(DisplayMap map) {
             if (map == null) throw new ArgumentNullException(nameof(map));
             if (!map.Any()) throw new ArgumentException("Map must contain at least one display.", nameof(map));
 
