@@ -9,4 +9,13 @@
     <ProjectReference Include="..\..\Altairis.Mmdc.DisplayDriver\Altairis.Mmdc.DisplayDriver.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="MapWithConnectivityErrors.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="MapWithGeometryErrors.json">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

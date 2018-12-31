@@ -1,0 +1,19 @@
+﻿{
+  "Width": 8,
+  "Height": 8,
+  "Items": [
+    {
+      "Display": {
+        "PortName": "COM1",
+        "Version": "Test-Display/1.0.0",
+        "Width": 8,
+        "Height": 8,
+        "SerialNumber": "NULLNULLNULLNULL"
+      },
+      "Position": {
+        "X": 0,
+        "Y": 0
+      }
+    }
+  ]
+}

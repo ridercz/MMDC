@@ -1,0 +1,32 @@
+﻿{
+  "Width": 32,
+  "Height": 16,
+  "Items": [
+    {
+      "Display": {
+        "PortName": "COM4",
+        "Version": "NeoPixel-Display/1.0.0",
+        "Width": 16,
+        "Height": 16,
+        "SerialNumber": "A8A9EF1D1EDCDA23"
+      },
+      "Position": {
+        "X": 0,
+        "Y": 0
+      }
+    },
+    {
+      "Display": {
+        "PortName": "COM5",
+        "Version": "NeoPixel-Display/1.0.0",
+        "Width": 32,
+        "Height": 8,
+        "SerialNumber": "47C814AEB17AC835"
+      },
+      "Position": {
+        "X": 0,
+        "Y": 10
+      }
+    }
+  ]
+}
