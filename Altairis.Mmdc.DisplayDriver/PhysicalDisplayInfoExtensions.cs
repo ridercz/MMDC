@@ -51,7 +51,7 @@ namespace Altairis.Mmdc.DisplayDriver {
             port.Write(sn, 0, sn.Length);
         }
 
-        public static Rectangle ToRectangle(this KeyValuePair<PhysicalDisplayInfo, PhysicalDisplayPosition> item) => new Rectangle(item.Value.X, item.Value.Y, item.Key.Width, item.Key.Height);
+        public static Rectangle ToRectangle(this DisplayMapPosition item) => new Rectangle(item.Position.X, item.Position.Y, item.Display.Width, item.Display.Height);
 
     }
 }

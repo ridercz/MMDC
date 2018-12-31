@@ -5,11 +5,13 @@ using System.Linq;
 using Newtonsoft.Json;
 
 namespace Altairis.Mmdc.DisplayDriver {
-    public class DisplayMap : Dictionary<PhysicalDisplayInfo, PhysicalDisplayPosition> {
+    public class DisplayMap {
 
         public int Width { get; set; }
 
         public int Height { get; set; }
+
+        public IList<DisplayMapPosition> Items { get; set; } = new List<DisplayMapPosition>();
 
         public static DisplayMap Create(IEnumerable<PhysicalDisplayInfo> displays, IMapBuildStrategy strategy) {
             if (displays == null) throw new ArgumentNullException(nameof(displays));
@@ -24,13 +26,13 @@ namespace Altairis.Mmdc.DisplayDriver {
             // Layout display using specified strategy
             foreach (var display in displays) {
                 lastPosition = strategy.GetDisplayPosition(lastDisplay, lastPosition);
+                map.Items.Add(new DisplayMapPosition { Display = display, Position = lastPosition });
                 lastDisplay = display;
-                map.Add(lastDisplay, lastPosition);
             }
 
             // Compute size
-            map.Width = map.Max(d => d.Value.X + d.Key.Width);
-            map.Height = map.Max(d => d.Value.Y + d.Key.Height);
+            map.Width = map.Items.Max(d => d.Position.X + d.Display.Width);
+            map.Height = map.Items.Max(d => d.Position.Y + d.Display.Height);
 
             return map;
         }

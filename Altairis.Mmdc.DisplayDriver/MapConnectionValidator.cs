@@ -18,18 +18,18 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         public IEnumerable<MapValidationError> Validate(DisplayMap map) {
             if (map == null) throw new ArgumentNullException(nameof(map));
-            if (!map.Any()) throw new ArgumentException("Map must contain at least one display.", nameof(map));
+            if (!map.Items.Any()) throw new ArgumentException("Map must contain at least one display.", nameof(map));
 
             // Create copy of list of connected displays
             var cdl = new List<PhysicalDisplayInfo>(this.ConnectedDisplays);
 
             // Check all mapped displays are connected
-            foreach (var item in map) {
-                var scd = cdl.FirstOrDefault(x => x.SerialNumber.Equals(item.Key.SerialNumber, StringComparison.OrdinalIgnoreCase));
+            foreach (var item in map.Items) {
+                var scd = cdl.FirstOrDefault(x => x.SerialNumber.Equals(item.Display.SerialNumber, StringComparison.OrdinalIgnoreCase));
                 if (scd == null) {
                     yield return new MapValidationError {
-                        Display = item.Key,
-                        Position = item.Value,
+                        Display = item.Display,
+                        Position = item.Position,
                         Message = "Mapped display is not connected."
                     };
                 } else {
