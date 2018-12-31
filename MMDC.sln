@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Arduino", "Arduino", "{8570
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Altairis.Mmdc.PoC.Physical", "PoC\Altairis.Mmdc.PoC.Physical\Altairis.Mmdc.PoC.Physical.csproj", "{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Altairis.Mmdc.PoC.Mapping", "PoC\Altairis.Mmdc.PoC.Mapping\Altairis.Mmdc.PoC.Mapping.csproj", "{3CF78394-A621-4DBE-9D20-23937B9314A2}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -51,6 +53,14 @@ Global
 		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|x86.ActiveCfg = Release|Any CPU
 		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF}.Release|x86.Build.0 = Release|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Debug|x86.Build.0 = Debug|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Release|x86.ActiveCfg = Release|Any CPU
+		{3CF78394-A621-4DBE-9D20-23937B9314A2}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -58,6 +68,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{C5F80730-F44F-4478-BDAE-6634EFC2CA88} = {8570B87E-2593-489B-9493-9D15CA3961B7}
 		{847A9CA9-2E10-47FE-947E-AA0D37AFF5EF} = {033F0D89-7136-46EF-AB62-186ED758751C}
+		{3CF78394-A621-4DBE-9D20-23937B9314A2} = {033F0D89-7136-46EF-AB62-186ED758751C}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {754FC112-9AEF-49D5-8A95-E2B2AEBB56A3}
