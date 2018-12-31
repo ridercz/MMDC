@@ -4,7 +4,7 @@ using System.IO.Ports;
 using SixLabors.Primitives;
 
 namespace Altairis.Mmdc.DisplayDriver {
-    internal static class PhysicalDisplayInfoExtensions {
+    internal static class InternalExtensions {
         private const string DEVICE_SIGNATURE = "MMDC Display Connected";
         private const int SN_LENGTH = 8;
 
