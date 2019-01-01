@@ -13,8 +13,6 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         public abstract int Height { get; }
 
-        public abstract string DisplayId { get; }
-
         public abstract void SendFrame(byte[] rawData);
 
         // Default (virtual) members

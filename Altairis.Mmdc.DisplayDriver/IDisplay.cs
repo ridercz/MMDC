@@ -13,7 +13,5 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         int Height { get; }
 
-        string DisplayId { get; }
-
     }
 }

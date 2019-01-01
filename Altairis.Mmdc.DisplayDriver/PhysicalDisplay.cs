@@ -16,8 +16,6 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         public override int Height => this.Properties.Height;
 
-        public override string DisplayId => this.Properties.SerialNumber;
-
         public PhysicalDisplay(string portName, int speed = DEFAULT_SPEED, int timeout = DEFAULT_TIMEOUT) {
             this.port = new SerialPort(portName, speed) {
                 ReadTimeout = timeout,
