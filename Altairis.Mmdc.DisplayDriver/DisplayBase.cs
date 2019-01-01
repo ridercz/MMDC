@@ -36,7 +36,7 @@ namespace Altairis.Mmdc.DisplayDriver {
             this.SendFrame(frameBuffer);
         }
 
-        public virtual void SendImageFrame<TPixel>(Image<TPixel> image) where TPixel : struct, IPixel<TPixel> {
+        public virtual void SendFrame<TPixel>(Image<TPixel> image) where TPixel : struct, IPixel<TPixel> {
             if (image == null) throw new ArgumentNullException(nameof(image));
 
             // Convert image to RGB array
