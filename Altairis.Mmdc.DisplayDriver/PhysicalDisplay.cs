@@ -2,7 +2,7 @@
 using System.IO.Ports;
 
 namespace Altairis.Mmdc.DisplayDriver {
-    public class PhysicalDisplay : IDisplay, IDisposable {
+    public class PhysicalDisplay : DisplayBase, IDisposable {
         private const byte ACK_CHAR = 0x06;
 
         public const int DEFAULT_SPEED = 115200;
@@ -12,11 +12,11 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         public PhysicalDisplayInfo Properties { get; } = new PhysicalDisplayInfo();
 
-        public int Width => this.Properties.Width;
+        public override int Width => this.Properties.Width;
 
-        public int Height => this.Properties.Height;
+        public override int Height => this.Properties.Height;
 
-        public string DisplayId => this.Properties.SerialNumber;
+        public override string DisplayId => this.Properties.SerialNumber;
 
         public PhysicalDisplay(string portName, int speed = DEFAULT_SPEED, int timeout = DEFAULT_TIMEOUT) {
             this.port = new SerialPort(portName, speed) {
@@ -37,7 +37,7 @@ namespace Altairis.Mmdc.DisplayDriver {
             if (!result) throw new InvalidOperationException("Unknown device - unrecognized signature.");
         }
 
-        public void SendFrame(byte[] rawData) {
+        public override void SendFrame(byte[] rawData) {
             if (rawData == null) throw new ArgumentNullException(nameof(rawData));
             if (!this.port.IsOpen) throw new InvalidOperationException("Port not open.");
 
@@ -50,7 +50,7 @@ namespace Altairis.Mmdc.DisplayDriver {
             this.WaitForAck();
         }
 
-        public void SendColor(byte r, byte g, byte b) {
+        public override void SendColor(byte r, byte g, byte b) {
             if (!this.port.IsOpen) throw new InvalidOperationException("Port not open.");
 
             // Send single color frame

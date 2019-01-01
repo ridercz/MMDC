@@ -9,7 +9,7 @@ namespace Altairis.Mmdc.DisplayDriver {
 
         void SendColor(byte r, byte g, byte b);
 
-        int Width { get;  }
+        int Width { get; }
 
         int Height { get; }
 
