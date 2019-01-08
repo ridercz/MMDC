@@ -32,6 +32,32 @@ namespace MmdcPhysicalDisplaysPoc {
             foreach (var display in displays) {
                 SpeedTest(display.PortName);
             }
+
+            Console.WriteLine("Pixel test:");
+            foreach (var display in displays) {
+                ImageTest(display.PortName);
+            }
+        }
+
+        private static void ImageTest(string portName) {
+            if (portName == null) throw new ArgumentNullException(nameof(portName));
+            if (string.IsNullOrWhiteSpace(portName)) throw new ArgumentException("Value cannot be empty or whitespace only string.", nameof(portName));
+
+            using (var display = new PhysicalDisplay(portName)) {
+                // Connect
+                Console.Write($"  Connecting to {portName}...");
+                display.Open();
+                Console.WriteLine("OK");
+                Console.WriteLine($"    {display.Properties.Version} (SN: {display.Properties.SerialNumber}), resolution {display.Properties.Width} x {display.Properties.Height}");
+
+                // Prepare image frame
+                var frameBuffer = new byte[display.Width * display.Height * 3];
+                for (var i = 0; i < frameBuffer.Length; i += 3) {
+                    frameBuffer[i] = 0x33;
+                    display.SendFrame(frameBuffer);
+                }
+                display.SendColor(0, 0, 0);
+            }
         }
 
         private static void SpeedTest(string portName) {
